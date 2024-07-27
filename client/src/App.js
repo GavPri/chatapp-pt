@@ -7,6 +7,9 @@ import Cookies from "universal-cookie";
 // ----- API key
 const apiKey = "7dcuwnvqfkfp";
 
+// create a stream chat instance
+const client = StreamChat.getInstance(apiKey);
+
 const App = () => {
   return (
     <div className="bg-slate-500 flex flex-1 h-screen">
