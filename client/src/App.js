@@ -8,7 +8,9 @@ import Cookies from "universal-cookie";
 const apiKey = "7dcuwnvqfkfp";
 
 const App = () => {
-  return <div className="text-3xl text-slate-500">Hybrid Training</div>;
+  return (
+    <div className="bg-slate-500 flex flex-1 h-screen">Hybrid Training</div>
+  );
 };
 
 export default App;
