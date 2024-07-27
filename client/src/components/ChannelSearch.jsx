@@ -27,19 +27,19 @@ const ChannelSearch = () => {
 
   return (
     // ---- Component wrapper
-    <div className="relative flex justify-center items-center pt-[16px]">
+    <div className="relative flex justify-center items-center mt-6">
       {/* ----- Search input wrapper */}
-      <div className="flex justify-center items-center h-40 bg- bg-slate-100 rounded-md border-2-transparent width w-10/12">
+      <div className="group flex justify-center items-center bg-slate-100 rounded-md border-2-violet-500 width w-10/12 h-12 hover:border-2-violet-500">
         {/* Icon  */}
-        <div className="flex justify-center">
-          <IoIosSearch />
+        <div className="flex justify-center items-center bg-slate-900 h-full text-violet-100 group-hover:bg-violet-500 w-2/12 transition-all duration-500 rounded-l-md">
+          <IoIosSearch size={30} />
         </div>
         <input
           type="text"
           value={query}
           onChange={onSearch}
-          placeholder="Search"
-          className="px-4 py2"
+          placeholder="Search..."
+          className="outline-none bg-transparent py-2 px-4 focus:border-transparent active:border-transparent text-slate-900 w-10/12"
         />
       </div>
     </div>

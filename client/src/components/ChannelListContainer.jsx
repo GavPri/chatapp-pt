@@ -22,7 +22,7 @@ const SideBar = () => (
 );
 
 const CompanyHeader = () => (
-  <div className="w-full h-24 mt-6">
+  <div className="w-full mt-6">
     <p className="mx-auto text-center font-bold">Hybrid Training Center</p>
   </div>
 );
