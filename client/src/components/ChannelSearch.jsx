@@ -9,11 +9,11 @@ const ChannelSearch = () => {
 
   const getChannels = async (text) => {
     try {
-        // TODO fetch channels 
+      // TODO fetch channels
     } catch (error) {
-        setQuery('')
+      setQuery("");
     }
-  }
+  };
 
   //   onSearch function
   const onSearch = (event) => {
@@ -22,7 +22,7 @@ const ChannelSearch = () => {
     setLoading(true);
 
     setQuery(event.target.value);
-    getChannels(event.target.value)
+    getChannels(event.target.value);
   };
 
   return (
@@ -37,7 +37,7 @@ const ChannelSearch = () => {
         <input
           type="text"
           value={query}
-          onChange={onUserSearch}
+          onChange={onSearch}
           placeholder="Search"
           className="px-4 py2"
         />

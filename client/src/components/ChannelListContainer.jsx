@@ -6,6 +6,7 @@ import Cookies from "universal-cookie";
 // ---- Icon imports
 import { GiBiceps } from "react-icons/gi";
 import { PiSignOutLight } from "react-icons/pi";
+import ChannelSearch from "./ChannelSearch";
 
 // ---- Sidebar
 const SideBar = () => (
@@ -32,6 +33,7 @@ const ChannelListContainer = () => {
       <SideBar />
       <div className="flex flex-col bg-slate-400 w-2/12">
         <CompanyHeader />
+        <ChannelSearch />
       </div>
     </>
   );
