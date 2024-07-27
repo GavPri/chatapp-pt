@@ -9,7 +9,15 @@ const apiKey = "7dcuwnvqfkfp";
 
 const App = () => {
   return (
-    <div className="bg-slate-500 flex flex-1 h-screen">Hybrid Training</div>
+    <div className="bg-slate-500 flex flex-1 h-screen">
+      {/* ---- Chat */}
+      <Chat>
+        {/* ----- ChannelListContainer */}
+        <></>
+        {/* ----- ChannelContainer */}
+        <></>
+      </Chat>
+    </div>
   );
 };
 
