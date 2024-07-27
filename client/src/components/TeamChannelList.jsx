@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const TeamChannelList = () => {
-  return (
-    <div>TeamChannelList</div>
-  )
-}
+const TeamChannelList = ({ childer, error = false, loading, type }) => {
+  return <div></div>;
+};
 
-export default TeamChannelList
+export default TeamChannelList;
