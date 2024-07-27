@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div className="bg-slate-500 flex flex-1 h-screen">
       {/* ---- Chat */}
-      <Chat>
+      <Chat client={client}>
         {/* ----- ChannelListContainer */}
         <></>
         {/* ----- ChannelContainer */}
