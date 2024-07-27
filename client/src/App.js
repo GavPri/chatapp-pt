@@ -19,9 +19,9 @@ const App = () => {
       {/* ---- Chat */}
       <Chat client={client}>
         {/* ----- ChannelListContainer */}
-        <></>
+        <ChannelListContainer/>
         {/* ----- ChannelContainer */}
-        <></>
+        <ChannelContainer/>
       </Chat>
     </div>
   );
