@@ -16,6 +16,16 @@ const TeamChannelList = ({ children, error = true, loading, type }) => {
       </Alert>
     ) : null;
   }
+  if (loading) {
+    return (
+      <Alert className="h-24 w-10/12 mx-auto mt-4 bg-slate-950 text-slate-300">
+        <AlertCircle className="h-6 w-6" />
+        <AlertTitle>
+          {(type = "team" ? "Channels" : "Messages")}loading
+        </AlertTitle>
+      </Alert>
+    );
+  }
   return <></>;
 };
 
