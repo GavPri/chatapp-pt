@@ -3,6 +3,7 @@ import React from "react";
 import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
+import { Auth } from "./components";
 
 // ----- Component imports
 import { ChannelListContainer, ChannelContainer } from "./components";
@@ -13,20 +14,19 @@ const apiKey = "7dcuwnvqfkfp";
 // create a stream chat instance
 const client = StreamChat.getInstance(apiKey);
 
-const authToken = false
+const authToken = false;
 
 const App = () => {
+  if (!authToken) return <Auth />;
 
-  if (!authToken) return <Auth/>
-  
   return (
     <div className="bg-slate-500 flex flex-1 h-screen">
       {/* ---- Chat */}
       <Chat client={client}>
         {/* ----- ChannelListContainer */}
-        <ChannelListContainer/>
+        <ChannelListContainer />
         {/* ----- ChannelContainer */}
-        <ChannelContainer/>
+        <ChannelContainer />
       </Chat>
     </div>
   );
