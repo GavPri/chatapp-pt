@@ -13,7 +13,12 @@ const apiKey = "7dcuwnvqfkfp";
 // create a stream chat instance
 const client = StreamChat.getInstance(apiKey);
 
+const authToken = false
+
 const App = () => {
+
+  if (!authToken) return <Auth/>
+  
   return (
     <div className="bg-slate-500 flex flex-1 h-screen">
       {/* ---- Chat */}
