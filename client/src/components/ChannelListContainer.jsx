@@ -6,9 +6,7 @@ import Cookies from "universal-cookie";
 // ---- Icon imports
 import { GiBiceps } from "react-icons/gi";
 import { PiSignOutLight } from "react-icons/pi";
-import ChannelSearch from "./ChannelSearch";
-import TeamChannelList from "./TeamChannelList";
-
+import { TeamChannelPreview, ChannelSearch, TeamChannelList } from "./";
 // ---- Sidebar
 const SideBar = () => (
   <div className="w-1/12 bg-slate-300">
@@ -38,8 +36,7 @@ const ChannelListContainer = () => {
         <ChannelList
           filters={{}}
           channelRenderFilterFn={() => {}}
-          List={(listProps) => <TeamChannelList {...listProps}
-          type='team' />}
+          List={(listProps) => <TeamChannelList {...listProps} type="team" />}
         />
       </div>
     </>
