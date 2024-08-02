@@ -8,6 +8,16 @@ const Auth = () => {
   const handleIsSignUp = () => {
     setIsSignUp(!isSignUp);
   };
+
+  const SignUpInputs = () => {
+    return (
+      <>
+        <label htmlFor="Age">Age</label>
+        <input type="text" placeholder="Age" />
+      </>
+    );
+  };
+
   return (
     <div className="h-screen w-screen bg-slate-100 flex justify-center items-center">
       {/* Form Container */}
@@ -16,6 +26,11 @@ const Auth = () => {
         <h1 className="text-3xl text-violet-500 text-center mt-4">
           {isSignUp ? "Sign Up" : "Sign In"}
         </h1>
+        <form>
+          {isSignUp && <SignUpInputs />}
+          <label htmlFor="name"></label>
+          <input type="text" placeholder="Name" />
+        </form>
         {/* Change form button */}
         <p className="text-center">
           Already got an account?{" "}
