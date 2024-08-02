@@ -3,7 +3,7 @@ import { Avatar, useChatContext } from "stream-chat-react";
 
 const TeamChannelPreview = ({ children, type }) => {
   // useChatContectHook
-  const { channel, client } = useChatContext();
+  const { channel: activeChannel, client } = useChatContext();
 
   return <div>TeamChannelPreview</div>;
 };
