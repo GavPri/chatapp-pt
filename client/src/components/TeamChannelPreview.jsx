@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TeamChannelPreview = () => {
+const TeamChannelPreview = ({children, type}) => {
   return (
     <div>TeamChannelPreview</div>
   )
