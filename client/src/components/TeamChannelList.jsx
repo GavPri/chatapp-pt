@@ -19,7 +19,7 @@ const TeamChannelList = ({ children, error = true, loading, type }) => {
 
   const LoadingSpinner = () => (
     <>
-      <div role="status">
+      <div>
         <svg
           aria-hidden="true"
           class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-violet-600"
@@ -51,7 +51,13 @@ const TeamChannelList = ({ children, error = true, loading, type }) => {
       </Alert>
     );
   }
-  return <></>;
+  return (
+    <div className="w-10/12 flex flex-col">
+      <div className="px-4 flex justify-between items-center">
+        <p>{(type === "team" ? "Channels" : "Direct Messages")}</p>
+      </div>
+    </div>
+  );
 };
 
 export default TeamChannelList;
