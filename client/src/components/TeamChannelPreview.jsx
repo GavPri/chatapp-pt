@@ -39,7 +39,14 @@ const TeamChannelPreview = ({ children, type, channel }) => {
     );
   };
 
-  return <div>TeamChannelPreview</div>;
+  return (
+    <div
+      className={channel?.id === activeChannel ? "" : ""}
+      onClick={() => {
+        console.log(channel);
+      }}
+    ></div>
+  );
 };
 
 export default TeamChannelPreview;
