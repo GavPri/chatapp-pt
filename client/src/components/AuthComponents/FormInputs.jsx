@@ -28,6 +28,9 @@ const FormInputs = ({ handleIsSignUp, isSignUp }) => {
     );
   };
 
+  // * Handle Avatar Upload: Show preview to user
+  const handleAvatarChange = () => {};
+
   return (
     //  * Inputs container
     <div className="w-64 h-fit mx-auto">
@@ -81,9 +84,31 @@ const FormInputs = ({ handleIsSignUp, isSignUp }) => {
             name="avatarURL"
             className="hidden"
           />
-          <AvatarUploadButton />
         </>
       )}
+      <label htmlFor="password" className="sr-only">
+        Password
+      </label>
+      <input
+        type="password"
+        name="password"
+        className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+        placeholder="Password"
+      />
+      {isSignUp && (
+        <>
+          <label htmlFor="confirmPassword" className="sr-only">
+            Confirm Password
+          </label>{" "}
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            name="confirmPassword"
+            className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+          />
+        </>
+      )}
+      {isSignUp && <AvatarUploadButton />}
     </div>
   );
 };
