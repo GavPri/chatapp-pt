@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 
 // * Sign in page links - username, password
 
-const FormInputs = ({ handleIsSignUp, isSignUp }) => {
+const FormInputs = ({ isSignUp }) => {
   //  * Creat state for avatar preview - setting it to null
   const [avatarPreview, setAvatarPreview] = useState(null);
 
@@ -20,7 +20,11 @@ const FormInputs = ({ handleIsSignUp, isSignUp }) => {
             <img
               src={avatarPreview}
               alt="Avatar"
-              className="h-32 aspect-square mx-auto rounded-full object-cover"
+              className="h-32 aspect-square mx-auto rounded-full object-cover cursor-pointer"
+              onClick={(event) => {
+                event.preventDefault();
+                AvatarUploadInput.current.click();
+              }}
             />
           </>
         ) : (
