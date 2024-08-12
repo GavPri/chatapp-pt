@@ -5,7 +5,9 @@ import React, { useRef, useState } from "react";
 // * Sign in page links - username, password
 
 const FormInputs = ({ handleIsSignUp, isSignUp }) => {
-    const [avatarPreview, setAvatarPreview] = useState(false)
+  //  * Creat state for avatar preview - setting it to null
+  const [avatarPreview, setAvatarPreview] = useState(null);
+
   // * Creating a refernce for the avatar upload input
   const AvatarUploadInput = useRef(null);
 
@@ -33,12 +35,12 @@ const FormInputs = ({ handleIsSignUp, isSignUp }) => {
   const handleAvatarChange = (event) => {
     const file = event.target.file[0];
     if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-
-        }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatarPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
-    
   };
 
   return (
