@@ -4,18 +4,21 @@ import React, { useRef, useState } from "react";
 
 // * Sign in page links - username, password
 
-// ? Intial state of the form. 
+// * Intial state of the form.
 const formInitialState = {
-    fullName: '',
-    username: '', 
-    phoneNumber: '',
-    password: '',
-    confirmPassword: '',
-    avatarURL: '',
-}
+  fullName: "",
+  username: "",
+  phoneNumber: "",
+  password: "",
+  confirmPassword: "",
+  avatarURL: "",
+};
+
 const FormInputs = ({ isSignUp }) => {
   //  * Creat state for avatar preview - setting it to null
   const [avatarPreview, setAvatarPreview] = useState(null);
+  // * Create form state with initial state above
+  const [form, setForm] = useState(formInitialState);
 
   // * Creating a refernce for the avatar upload input
   const AvatarUploadInput = useRef(null);
