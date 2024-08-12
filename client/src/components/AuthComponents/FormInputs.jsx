@@ -1,5 +1,5 @@
 import { Image } from "lucide-react";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 // TODO - create intial state for form data.
 
 // * Sign in page links - username, password
@@ -17,9 +17,23 @@ const formInitialState = {
 const FormInputs = ({ isSignUp }) => {
   //  * Creat state for avatar preview - setting it to null
   const [avatarPreview, setAvatarPreview] = useState(null);
+
   // * Create form state with initial state above
   const [form, setForm] = useState(formInitialState);
 
+  // * useEffect to check form data
+  useEffect(() => {
+    console.log(form);
+  }, [form]);
+
+  // * Handle user inputs to be prepped for authentication.
+  const handleFormInputChange = (event) => {
+    const { name, value } = event.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+  };
   // * Creating a refernce for the avatar upload input
   const AvatarUploadInput = useRef(null);
 
@@ -64,11 +78,17 @@ const FormInputs = ({ isSignUp }) => {
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setAvatarPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+      // * Create a URL for the file
+      const objectURL = URL.createObjectURL(file);
+
+      // * Set the avatar preview to the created URL
+      setAvatarPreview(objectURL);
+
+      // * Update the form state with the URL
+      setForm((prevForm) => ({
+        ...prevForm,
+        avatarURL: objectURL, // Store the object URL in avatarURL
+      }));
     }
   };
 
@@ -85,6 +105,7 @@ const FormInputs = ({ isSignUp }) => {
             placeholder="Full Name"
             name="fullName"
             className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+            onChange={handleFormInputChange}
           />
         </>
       )}
@@ -96,6 +117,7 @@ const FormInputs = ({ isSignUp }) => {
         placeholder="Username"
         name="username"
         className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+        onChange={handleFormInputChange}
       />
       {isSignUp && (
         <>
@@ -107,6 +129,7 @@ const FormInputs = ({ isSignUp }) => {
             placeholder="Phone Number"
             name="phoneNumber"
             className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+            onChange={handleFormInputChange}
           />
         </>
       )}
@@ -134,6 +157,7 @@ const FormInputs = ({ isSignUp }) => {
         name="password"
         className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
         placeholder="Password"
+        onChange={handleFormInputChange}
       />
       {isSignUp && (
         <>
@@ -145,6 +169,7 @@ const FormInputs = ({ isSignUp }) => {
             placeholder="Confirm Password"
             name="confirmPassword"
             className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+            onChange={handleFormInputChange}
           />
         </>
       )}
