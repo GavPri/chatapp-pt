@@ -29,7 +29,16 @@ const FormInputs = ({ handleIsSignUp, isSignUp }) => {
   };
 
   // * Handle Avatar Upload: Show preview to user
-  const handleAvatarChange = () => {};
+  const handleAvatarChange = (event) => {
+    const file = event.target.file[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            
+        }
+    }
+    
+  };
 
   return (
     //  * Inputs container
