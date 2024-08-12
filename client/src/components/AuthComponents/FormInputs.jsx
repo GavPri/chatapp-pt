@@ -1,9 +1,50 @@
-import React from 'react'
+import React from "react";
+// TODO - Auth inputs - fullname, username, phonenumber, profile picture, password, confirm password
 
-const FormInputs = () => {
+// * Sign in page links - username, password
+
+const FormInputs = ({ handleIsSignUp, isSignUp }) => {
   return (
-    <div>FormInputs</div>
-  )
-}
+    //  * Inputs container
+    <div className="w-64 h-fit mx-auto">
+      {/* Input for full name, rendered conditionally */}
+      {isSignUp && (
+        <>
+          <label htmlFor="fullName" className="sr-only">
+            Full Name
+          </label>{" "}
+          <input
+            type="text"
+            placeholder="Full Name"
+            name="fullName"
+            className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+          />
+        </>
+      )}
+      <label htmlFor="username" className="sr-only">
+        Full Name
+      </label>{" "}
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+      />
+      {isSignUp && (
+        <>
+          <label htmlFor="phoneNumber" className="sr-only">
+            Phone Number
+          </label>{" "}
+          <input
+            type="text"
+            placeholder="Phone Number"
+            name="phoneNumber"
+            className="w-full rounded-md drop-shadow-sm my-4 py-4 px-4"
+          />
+        </>
+      )}
+    </div>
+  );
+};
 
-export default FormInputs
+export default FormInputs;

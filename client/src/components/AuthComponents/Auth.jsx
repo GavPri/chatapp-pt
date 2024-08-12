@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
+import FormInputs from "./FormInputs";
 
 const Auth = () => {
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(true);
 
   const handleIsSignUp = () => {
     setIsSignUp(!isSignUp);
@@ -27,9 +28,7 @@ const Auth = () => {
           {isSignUp ? "Sign Up" : "Sign In"}
         </h1>
         <form>
-          {isSignUp && <SignUpInputs />}
-          <label htmlFor="name"></label>
-          <input type="text" placeholder="Name" />
+          <FormInputs handleIsSignUp={handleIsSignUp} isSignUp={isSignUp} />
         </form>
         {/* Change form button */}
         <p className="text-center">
