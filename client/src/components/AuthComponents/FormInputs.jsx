@@ -1,10 +1,11 @@
 import { Image } from "lucide-react";
-import React, { useRef } from "react";
-// TODO - Auth inputs - fullname, username, phonenumber, profile picture, password, confirm password
+import React, { useRef, useState } from "react";
+// TODO - create state to handle preview of avatar - avatar preview.
 
 // * Sign in page links - username, password
 
 const FormInputs = ({ handleIsSignUp, isSignUp }) => {
+    const [avatarPreview, setAvatarPreview] = useState(false)
   // * Creating a refernce for the avatar upload input
   const AvatarUploadInput = useRef(null);
 
@@ -34,7 +35,7 @@ const FormInputs = ({ handleIsSignUp, isSignUp }) => {
     if (file) {
         const reader = new FileReader();
         reader.onloadend = () => {
-            
+
         }
     }
     
