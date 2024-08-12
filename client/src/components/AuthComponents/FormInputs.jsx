@@ -1,9 +1,18 @@
 import { Image } from "lucide-react";
 import React, { useRef, useState } from "react";
-// TODO - create state to handle preview of avatar - avatar preview.
+// TODO - create intial state for form data.
 
 // * Sign in page links - username, password
 
+// ? Intial state of the form. 
+const formInitialState = {
+    fullName: '',
+    username: '', 
+    phoneNumber: '',
+    password: '',
+    confirmPassword: '',
+    avatarURL: '',
+}
 const FormInputs = ({ isSignUp }) => {
   //  * Creat state for avatar preview - setting it to null
   const [avatarPreview, setAvatarPreview] = useState(null);
@@ -48,7 +57,7 @@ const FormInputs = ({ isSignUp }) => {
     );
   };
 
-  // * Handle Avatar Upload: Show preview to user
+  // * Handle Avatar Upload: Show preview to user.
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -63,7 +72,6 @@ const FormInputs = ({ isSignUp }) => {
   return (
     //  * Inputs container
     <div className="w-64 h-fit mx-auto">
-      {/* Input for full name, rendered conditionally */}
       {isSignUp && (
         <>
           <label htmlFor="fullName" className="sr-only">
@@ -99,7 +107,6 @@ const FormInputs = ({ isSignUp }) => {
           />
         </>
       )}
-      {/* TODO change from default file input */}
       {isSignUp && (
         <>
           <label htmlFor="avatarURL" className="sr-only">
