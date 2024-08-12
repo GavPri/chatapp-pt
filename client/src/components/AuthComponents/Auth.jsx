@@ -10,15 +10,6 @@ const Auth = () => {
     setIsSignUp(!isSignUp);
   };
 
-  const SignUpInputs = () => {
-    return (
-      <>
-        <label htmlFor="Age">Age</label>
-        <input type="text" placeholder="Age" />
-      </>
-    );
-  };
-
   return (
     <div className="h-screen w-screen bg-slate-100 flex justify-center items-center">
       {/* Form Container */}
