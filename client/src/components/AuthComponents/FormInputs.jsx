@@ -15,25 +15,38 @@ const FormInputs = ({ handleIsSignUp, isSignUp }) => {
   const AvatarUploadButton = () => {
     return (
       <>
-        <button
-          onClick={() => {
-            AvatarUploadInput.current.click();
-          }}
-          className="flex justify-between items-center w-full bg-gradient-to-tr from-violet-500 to-violet-700 text-slate-50 py-4 px-6 rounded-md"
-        >
-          Choose your Avatar!{" "}
-          <span>
-            {" "}
-            <Image />{" "}
-          </span>
-        </button>
+        {avatarPreview ? (
+          <>
+            <img
+              src={avatarPreview}
+              alt="Avatar"
+              className="h-32 aspect-square mx-auto rounded-full object-cover"
+            />
+          </>
+        ) : (
+          <>
+            <button
+              onClick={(event) => {
+                event.preventDefault();
+                AvatarUploadInput.current.click();
+              }}
+              className="flex justify-between items-center w-full bg-gradient-to-tr from-violet-500 to-violet-700 text-slate-50 py-4 px-6 rounded-md"
+            >
+              Choose your Avatar!{" "}
+              <span>
+                {" "}
+                <Image />{" "}
+              </span>
+            </button>
+          </>
+        )}
       </>
     );
   };
 
   // * Handle Avatar Upload: Show preview to user
   const handleAvatarChange = (event) => {
-    const file = event.target.file[0];
+    const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -90,6 +103,7 @@ const FormInputs = ({ handleIsSignUp, isSignUp }) => {
           </label>{" "}
           <input
             ref={AvatarUploadInput}
+            onChange={handleAvatarChange}
             type="file"
             accept="image/png, image/jpeg"
             placeholder="Avatar"
