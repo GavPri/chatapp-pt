@@ -34,6 +34,7 @@ const FormInputs = ({ isSignUp }) => {
       [name]: value,
     }));
   };
+  
   // * Creating a refernce for the avatar upload input
   const AvatarUploadInput = useRef(null);
 
