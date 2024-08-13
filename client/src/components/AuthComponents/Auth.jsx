@@ -4,6 +4,9 @@ import axios from "axios";
 import FormInputs from "./FormInputs";
 import { Button } from "../ui/button";
 
+// * Create an instance of cookies.
+const cookies = new Cookies();
+
 const Auth = () => {
   // ! Temporary prop passing from child to parent - DELETE LATER
   // const [data, setData] = useState(null)
@@ -21,15 +24,15 @@ const Auth = () => {
   const handleSubmit = async (event) => {
     // * Prevent default behaviour of reloading the page.
     event.preventDefault();
-    
-    // * destructure the form data 
-    const { fullName, username, password, phoneNumber, avatarURL} = form;
 
-    // * Create thr URL for the post request. 
-    const URL = 'http://localhost:5000/auth'
+    // * destructure the form data
+    const { fullName, username, password, phoneNumber, avatarURL } = form;
 
-    // * In this post request we are sending the form data. 
-    // * We will also have to destructure the data that is returned to us. 
+    // * Create thr URL for the post request.
+    const URL = "http://localhost:5000/auth";
+
+    // * In this post request we are sending the form data.
+    // * We will also have to destructure the data that is returned to us.
     const {
       date: { token, userId, hashedPassword },
     } = await axios.post(`${URL}/${isSignUp ? "signup" : "login"}`, {
@@ -39,6 +42,20 @@ const Auth = () => {
       phoneNumber,
       avatarURL,
     });
+
+    // * Adding cookies to sign in and sign up
+    cookies.set("token", token);
+    cookies.set("username", username);
+    cookies.set("fullName", fullName);
+    cookies.set("userId", userId);
+    // * If it is a sign up form
+    if (isSignUp) {
+      cookies.set("fullName", fullName);
+      cookies.set("avatarURL", userId);
+      cookies.set("hashedPassword", phoneNumber);
+    }
+    // * Reloading the window will refresh the app. AuthToken will now be true, directing the user to the chat app. 
+    window.location.reload()
   };
 
   return (
