@@ -64,7 +64,7 @@ const login = async (req, res) => {
     // * With a succesfull query we need to create a new user token.
     // * It has to be created using an existing user, hence `user[0].id`
     const token = serverClient.createUserToken(users[0].id);
-    
+
     // * if this login is succesfull we need to send all the data back to the front end.
     if (success) {
       res
@@ -85,4 +85,4 @@ const login = async (req, res) => {
 };
 
 // * Exporting the contollers as an object
-modules.exports = { signup, login };
+module.exports = { signup, login };
