@@ -6,3 +6,6 @@ const cors = require("cors");
 
 //  * Create an App instance
 const app = express();
+
+// *Specify the port for the backend
+const PORT = process.env.PORT || 5000;
