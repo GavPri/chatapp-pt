@@ -1,5 +1,10 @@
 // * ----- Auth Login & Sign Up Controllers
-//  * Arrow functions for each 
+
+// * Imports for routes. 
+const { connect } = require('getstream')
+const bcrypt = require('bcrypt')
+const StreamChat = require('stream-chat')
+const crypto = require('crypto')
 
 const signup = (req, res) => {
     // * try catch block 
