@@ -22,9 +22,9 @@ const FormInputs = ({ isSignUp }) => {
   const [form, setForm] = useState(formInitialState);
 
   // * useEffect to check form data
-  useEffect(() => {
-    console.log(form);
-  }, [form]);
+  // useEffect(() => {
+  //   onFormChange(form); // Pass the form data to the parent whenever it changes
+  // }, [form]);
 
   // * Handle user inputs to be prepped for authentication.
   const handleFormInputChange = (event) => {
@@ -34,7 +34,7 @@ const FormInputs = ({ isSignUp }) => {
       [name]: value,
     }));
   };
-  
+
   // * Creating a refernce for the avatar upload input
   const AvatarUploadInput = useRef(null);
 

@@ -5,7 +5,14 @@ import FormInputs from "./FormInputs";
 import { Button } from "../ui/button";
 
 const Auth = () => {
+  // ! Temporary prop passing from child to parent - DELETE LATER
+  // const [data, setData] = useState(null)
   const [isSignUp, setIsSignUp] = useState(true);
+
+  //  Call back function to access the child prop in the parent
+  // const handleData = (form) => {
+  //   setData(form)
+  // }
 
   const handleIsSignUp = () => {
     setIsSignUp(!isSignUp);
@@ -14,6 +21,8 @@ const Auth = () => {
   const handleSubmit = (event) => {
     // ? Prevent default behaviour of reloading the page.
     event.preventDefault();
+    // * data passed from child form to parent
+    // console.log(data)
   };
 
   return (
