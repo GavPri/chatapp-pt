@@ -12,3 +12,6 @@ const { signup, login } = require("../controllers/auth.js");
 // ? Controllers now called on each route. 
 router.post("/signup", signup);
 router.post("/login", login);
+
+// * Exporting the router
+module.exports = router;
