@@ -10,6 +10,11 @@ const Auth = () => {
   const handleIsSignUp = () => {
     setIsSignUp(!isSignUp);
   };
+  // * Handle submit function
+  const handleSubmit = (event) => {
+    // ? Prevent default behaviour of reloading the page.
+    event.preventDefault();
+  };
 
   return (
     <div className="h-screen w-screen bg-slate-100 flex justify-center items-center">
@@ -19,7 +24,7 @@ const Auth = () => {
         <h1 className="text-3xl text-violet-500 text-center mt-4">
           {isSignUp ? "Sign Up" : "Sign In"}
         </h1>
-        <form className="w-full">
+        <form className="w-full" onSubmit={handleSubmit}>
           <FormInputs isSignUp={isSignUp} />
           <div className="w-full flex justify-center items-center my-4 ">
             <Button className="bg-gradient-to-tr from-violet-400 to-violet-700 py-4 w-8/12 md:w-1/5 px-6">
