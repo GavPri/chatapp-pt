@@ -9,3 +9,6 @@ const app = express();
 
 // *Specify the port for the backend
 const PORT = process.env.PORT || 5000;
+
+// *Using dotenv to call enviorment variables.
+require("dotenv").config();
