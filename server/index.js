@@ -4,6 +4,9 @@ const express = require("express");
 // * Cross origin requests
 const cors = require("cors");
 
+// * ------  App routes -------
+const authRoutes = require("./routes/auth.js")
+
 //  * Create an App instance
 const app = express();
 
