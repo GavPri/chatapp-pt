@@ -18,11 +18,27 @@ const Auth = () => {
     setIsSignUp(!isSignUp);
   };
   // * Handle submit function
-  const handleSubmit = (event) => {
-    // ? Prevent default behaviour of reloading the page.
+  const handleSubmit = async (event) => {
+    // * Prevent default behaviour of reloading the page.
     event.preventDefault();
-    // * data passed from child form to parent
-    // console.log(data)
+    
+    // * destructure the form data 
+    const { fullName, username, password, phoneNumber, avatarURL} = form;
+
+    // * Create thr URL for the post request. 
+    const URL = 'http://localhost:5000/auth'
+
+    // * In this post request we are sending the form data. 
+    // * We will also have to destructure the data that is returned to us. 
+    const {
+      date: { token, userId, hashedPassword },
+    } = await axios.post(`${URL}/${isSignUp ? "signup" : "login"}`, {
+      fullName,
+      username,
+      password,
+      phoneNumber,
+      avatarURL,
+    });
   };
 
   return (
