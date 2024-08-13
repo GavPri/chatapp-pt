@@ -28,5 +28,9 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
+//  * Adding routes from routes/auth.js to be used across the application
+// * specify the start of the url, and the routes we have imported above.
+app.use('/auth', authRoutes)
+
 // * Check to make sure the server is running
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
