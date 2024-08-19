@@ -46,6 +46,16 @@ const Auth = () => {
         }
       }
 
+      const response = await axios.post(
+        `${URL}/${isSignUp ? "signup" : "login"}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
       // * In this post request we are sending the form data.
       // * We will also have to destructure the data that is returned to us.
       const {
