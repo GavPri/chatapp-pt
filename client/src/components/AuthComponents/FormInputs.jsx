@@ -11,7 +11,7 @@ const formInitialState = {
   phoneNumber: "",
   password: "",
   confirmPassword: "",
-  avatarURL: null,
+  avatarFile: null,
 };
 
 const FormInputs = ({ isSignUp, onFormChange }) => {
@@ -88,7 +88,7 @@ const FormInputs = ({ isSignUp, onFormChange }) => {
       // * Update the form state with the URL
       setForm((prevForm) => ({
         ...prevForm,
-        avatarURL: objectURL, // Store the object URL in avatarURL
+        avatarFile: file, // Store the object URL in avatarURL
       }));
     }
   };
@@ -136,7 +136,7 @@ const FormInputs = ({ isSignUp, onFormChange }) => {
       )}
       {isSignUp && (
         <>
-          <label htmlFor="avatarURL" className="sr-only">
+          <label htmlFor="avatarFile" className="sr-only">
             Avatar URL
           </label>{" "}
           <input
@@ -145,7 +145,7 @@ const FormInputs = ({ isSignUp, onFormChange }) => {
             type="file"
             accept="image/png, image/jpeg"
             placeholder="Avatar"
-            name="avatarURL"
+            name="avatarFile"
             className="hidden"
           />
         </>
