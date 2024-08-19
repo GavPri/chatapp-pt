@@ -21,18 +21,30 @@ const Auth = () => {
   };
   // * Handle submit function
   const handleSubmit = async (event) => {
-    
     try {
-  
       // * Prevent default behaviour of reloading the page.
       event.preventDefault();
 
       // * destructure the form data
-      const { fullName, username, password, phoneNumber, avatarURL } = data;
+      const { fullName, username, password, phoneNumber, avatarFile } = data;
 
       // * Create thr URL for the post request.
       const URL =
         "https://5000-gavpri-chatapppt-w1a5xpdsocn.ws-eu115.gitpod.io/auth";
+
+      // * Create an instance of formData
+      const formData = new FormData();
+      formData.append("fullName", fullName);
+      formData.append("username", username);
+      formData.append("token", token);
+      formData.append("userId", userId);
+
+      if (isSignUp) {
+        formData.append("phoneNumber", phoneNumber);
+        if (avatarFile) {
+          formData.append("avatarFile", avatarFile);
+        }
+      }
 
       // * In this post request we are sending the form data.
       // * We will also have to destructure the data that is returned to us.
