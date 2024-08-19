@@ -11,7 +11,7 @@ const formInitialState = {
   phoneNumber: "",
   password: "",
   confirmPassword: "",
-  avatarURL: "",
+  avatarURL: null,
 };
 
 const FormInputs = ({ isSignUp, onFormChange }) => {
