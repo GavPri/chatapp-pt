@@ -8,54 +8,60 @@ import { Button } from "../ui/button";
 const cookies = new Cookies();
 
 const Auth = () => {
-  // ! Temporary prop passing from child to parent - DELETE LATER
-  // const [data, setData] = useState(null)
+  // ! Temporary prop passing from child to parent
+  const [data, setData] = useState({});
   const [isSignUp, setIsSignUp] = useState(true);
 
-  //  Call back function to access the child prop in the parent
-  // const handleData = (form) => {
-  //   setData(form)
-  // }
+  const handleFormChange = (form) => {
+    setData(form);
+  };
 
   const handleIsSignUp = () => {
     setIsSignUp(!isSignUp);
   };
   // * Handle submit function
   const handleSubmit = async (event) => {
-    // * Prevent default behaviour of reloading the page.
-    event.preventDefault();
+    
+    try {
+  
+      // * Prevent default behaviour of reloading the page.
+      event.preventDefault();
 
-    // * destructure the form data
-    const { fullName, username, password, phoneNumber, avatarURL } = form;
+      // * destructure the form data
+      const { fullName, username, password, phoneNumber, avatarURL } = data;
 
-    // * Create thr URL for the post request.
-    const URL = "http://localhost:5000/auth";
+      // * Create thr URL for the post request.
+      const URL =
+        "https://5000-gavpri-chatapppt-w1a5xpdsocn.ws-eu115.gitpod.io/auth";
 
-    // * In this post request we are sending the form data.
-    // * We will also have to destructure the data that is returned to us.
-    const {
-      date: { token, userId, hashedPassword },
-    } = await axios.post(`${URL}/${isSignUp ? "signup" : "login"}`, {
-      fullName,
-      username,
-      password,
-      phoneNumber,
-      avatarURL,
-    });
+      // * In this post request we are sending the form data.
+      // * We will also have to destructure the data that is returned to us.
+      const {
+        data: { token, userId, hashedPassword },
+      } = await axios.post(`${URL}/${isSignUp ? "signup" : "login"}`, {
+        fullName,
+        username,
+        password,
+        phoneNumber,
+        avatarURL,
+      });
 
-    // * Adding cookies to sign in and sign up
-    cookies.set("token", token);
-    cookies.set("username", username);
-    cookies.set("fullName", fullName);
-    cookies.set("userId", userId);
-    // * If it is a sign up form
-    if (isSignUp) {
+      // * Adding cookies to sign in and sign up
+      cookies.set("token", token);
+      cookies.set("username", username);
       cookies.set("fullName", fullName);
-      cookies.set("avatarURL", userId);
-      cookies.set("hashedPassword", phoneNumber);
+      cookies.set("userId", userId);
+      // * If it is a sign up form
+      if (isSignUp) {
+        cookies.set("avatarURL", avatarURL);
+        cookies.set("hashedPassword", hashedPassword);
+        cookies.set("phoneNumber", phoneNumber);
+      }
+      // * Reloading the window will refresh the app. AuthToken will now be true, directing the user to the chat app.
+      window.location.reload();
+    } catch (error) {
+      console.error("Axios Error: ", error.message);
     }
-    // * Reloading the window will refresh the app. AuthToken will now be true, directing the user to the chat app. 
-    window.location.reload()
   };
 
   return (
@@ -67,7 +73,7 @@ const Auth = () => {
           {isSignUp ? "Sign Up" : "Sign In"}
         </h1>
         <form className="w-full" onSubmit={handleSubmit}>
-          <FormInputs isSignUp={isSignUp} />
+          <FormInputs isSignUp={isSignUp} onFormChange={handleFormChange} />
           <div className="w-full flex justify-center items-center my-4 ">
             <Button className="bg-gradient-to-tr from-violet-400 to-violet-700 py-4 w-8/12 md:w-1/5 px-6">
               {isSignUp ? "Sign Up" : "Sign In"}

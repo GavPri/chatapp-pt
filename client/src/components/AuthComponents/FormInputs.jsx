@@ -14,7 +14,7 @@ const formInitialState = {
   avatarURL: "",
 };
 
-const FormInputs = ({ isSignUp }) => {
+const FormInputs = ({ isSignUp, onFormChange }) => {
   //  * Creat state for avatar preview - setting it to null
   const [avatarPreview, setAvatarPreview] = useState(null);
 
@@ -22,9 +22,9 @@ const FormInputs = ({ isSignUp }) => {
   const [form, setForm] = useState(formInitialState);
 
   // * useEffect to check form data
-  // useEffect(() => {
-  //   onFormChange(form); // Pass the form data to the parent whenever it changes
-  // }, [form]);
+  useEffect(() => {
+    onFormChange(form); // Pass the form data to the parent whenever it changes
+  }, [form]);
 
   // * Handle user inputs to be prepped for authentication.
   const handleFormInputChange = (event) => {
