@@ -26,7 +26,7 @@ const Auth = () => {
       event.preventDefault();
 
       // * destructure the form data
-      const { fullName, username, password, phoneNumber, avatarFile } = data;
+      // const { fullName, username, password, phoneNumber, avatarFile } = data;
 
       // * Create thr URL for the post request.
       const URL =
@@ -56,17 +56,20 @@ const Auth = () => {
         }
       );
 
+      // * destructure the response.data
+      const { token, userId, hashedPassword, fullName } = response.data;
+
       // * In this post request we are sending the form data.
       // * We will also have to destructure the data that is returned to us.
-      const {
-        data: { token, userId, hashedPassword },
-      } = await axios.post(`${URL}/${isSignUp ? "signup" : "login"}`, {
-        fullName,
-        username,
-        password,
-        phoneNumber,
-        avatarURL,
-      });
+      // const {
+      //   data: { token, userId, hashedPassword },
+      // } = await axios.post(`${URL}/${isSignUp ? "signup" : "login"}`, {
+      //   fullName,
+      //   username,
+      //   password,
+      //   phoneNumber,
+      //   avatarURL,
+      // });
 
       // * Adding cookies to sign in and sign up
       cookies.set("token", token);
@@ -80,9 +83,13 @@ const Auth = () => {
         cookies.set("phoneNumber", phoneNumber);
       }
       // * Reloading the window will refresh the app. AuthToken will now be true, directing the user to the chat app.
+      // ! Checking for logs
+      console.log(`Form data :${formData}, Respone data : ${response.data}`);
       window.location.reload();
     } catch (error) {
       console.error("Axios Error: ", error.message);
+      // ! Checking for logs
+      console.log(`Form data :${formData}, Respone data : ${response.data}`);
     }
   };
 
